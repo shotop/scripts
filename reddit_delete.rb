@@ -12,4 +12,4 @@ comments.each do |comment|
 	comment.delete
 end
 
-
+##
