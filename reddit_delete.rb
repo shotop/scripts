@@ -1,15 +1,12 @@
-require 'snooby'
+require 'redditkit'
 
-USERNAME = "xxxxx"
-PASSWORD = "xxxxx"
+USERNAME = "XXXXXXXXX"
+PASSWORD = "XXXXXXXXX"
 
-reddit = Snooby::Client.new('me, v1.0')
-reddit.authorize!(USERNAME, PASSWORD)
+authenticated_client = RedditKit::Client.new USERNAME, PASSWORD
 
-comments = reddit.user(USERNAME).comments(1000)
+comments = authenticated_client.my_content :category => :comments, :limit => 100
 
 comments.each do |comment|
-	comment.delete
+  authenticated_client.delete comment
 end
-
-##
